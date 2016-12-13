@@ -1,0 +1,11 @@
+<h2>Add a new product!</h2>
+
+
+	<input type="text" placeholder="What is the product?">
+	<input type="text" ng-model="newUserPin.description" placeholder="Say something about this product">
+
+	<select ng-model="newUserProduct.locationid" >
+	 <option value="{{userLocation.id}}" ng-repeat="userLocation in userLocations">{{userLocation.title}}</option>
+	</select>
+
+	<button ng-click="addNewProduct()">Save this product</button>
