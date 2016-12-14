@@ -4,11 +4,11 @@ app.controller('NewProductCtrl', function($scope, ProductsFactory, LocationsFact
 // console.log("newProductCtrlRunning: ");
 // pulls in the current user from the AuthFactory
 	let currentUser = AuthFactory.getUser();
+	var geocoder = new google.maps.Geocoder;
 
 // gets all the locations currently available for the user
 	LocationsFactory.getUserLocations(currentUser)
 	.then(function(allUserLocations){
-		console.log('allUserLocations', allUserLocations);
 		$scope.userLocations = allUserLocations;
 		$scope.$apply();
 	});
@@ -30,4 +30,40 @@ app.controller('NewProductCtrl', function($scope, ProductsFactory, LocationsFact
 			$scope.$apply();
 		});
 	};
+
+
+	$scope.newUserLocation = {
+		"name": "",
+		"lat": "",
+		"long": "",
+		"address": ""
+	};
+
+
+	$scope.addNewLocation = function(){
+		navigator.geolocation.getCurrentPosition(function(position){
+			$scope.newUserLocation.lat = position.coords.latitude;
+			$scope.newUserLocation.long = position.coords.longitude;
+			let latlng = {
+				lat: $scope.newUserLocation.lat,
+				lng: $scope.newUserLocation.long
+			};
+		console.log("newUserLocation = ", $scope.newUserLocation);
+	 	geocoder.geocode({'location': latlng}, function(results, status) {
+	    if (status === 'OK') {
+	      if (results[0]) {
+	      	console.log("results from geocoder", results[0].formatted_address);
+	      	$scope.newUserLocation.address = results[0].formatted_address;
+	      } else {
+	        window.alert('No results found');
+	      }
+	    } else {
+	      window.alert('Geocoder failed due to: ' + status);
+	    }
+  });
+
+			});
+
+
+	}
 });

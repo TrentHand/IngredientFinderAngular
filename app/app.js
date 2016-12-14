@@ -1,6 +1,6 @@
 'use strict';
 
-let app = angular.module('IngredientFinder', ['ngRoute']);
+let app = angular.module('IngredientFinder', ['ngRoute', 'angularReverseGeocode']);
 
 let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
 	AuthFactory.isAuthenticated()
@@ -33,7 +33,7 @@ app.config(function($routeProvider){
         }).
         when("/addlocation", {
             templateUrl: "partials/AddLocation.html",
-            controller: "AddLocationCtrl"
+            controller: "NewLocationCtrl"
             // resolve: {isAuth}
         }).
         when("/addproduct", {
