@@ -7,7 +7,6 @@ app.factory('ProductsFactory', function($http, FBCreds){
 		return new Promise((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/products.json`)
 			.success((data) => {
-				console.log("data: ", data);
 				Object.keys(data).forEach((fbKey) => {
 					let ProductObj = data[fbKey];
 					ProductObj.id = fbKey;

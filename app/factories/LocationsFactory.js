@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('LocationsFactory', function($http, FBCreds){
+app.factory('LocationsFactory', function($http, FBCreds, GMapCreds){
 				let LocationsArr = [];
 
 	let getAllLocations = (fbKey) => {
@@ -52,6 +52,33 @@ app.factory('LocationsFactory', function($http, FBCreds){
 		});
 	};
 
-	return { getAllLocations, getSingleLocation, postNewLocation, getUserLocations };
+		let getCurrentLocationPlaceid = (lat, long) => {
+		return new Promise((resolve, reject)=> {
+			// get this from the postman
+			$http.get(`https://maps.googleapis.com/maps/api/place/radarsearch/json?location=${lat},${long}&radius=50&type=business&key=${GMapCreds.apiKey}`)
+			.success((currentLocation) => {
+
+				});
+				resolve(userLocationsArr);
+			});
+	};
+
+
+		let getCurrentLocationAddress = (placeid) => {
+		return new Promise((resolve, reject)=> {
+			$http.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJb5on_wlmZIgRdcjMg9n5eLM&key=AIzaSyD0-3rF7IRkTdzTSpCuiWuJkXzw9exwOM8
+`)
+			.success((currentLocations) => {
+				Object.keys(userLocations).forEach((fbKey) => {
+					userLocations[fbKey].id = fbKey;
+					userLocationsArr.push(userLocations[fbKey]);
+				});
+				console.log('userLocationsArr', userLocationsArr);
+				resolve(userLocationsArr);
+			});
+		});
+	};
+
+	return { getAllLocations, getSingleLocation, postNewLocation, getUserLocations, getCurrentLocationPlaceid };
 
 });

@@ -1,12 +1,12 @@
 "use strict";
 
 app.controller('NewProductCtrl', function($scope, ProductsFactory, LocationsFactory, AuthFactory, $window){
-console.log("newProductCtrlRunning: ");
+// console.log("newProductCtrlRunning: ");
 // pulls in the current user from the AuthFactory
 	let currentUser = AuthFactory.getUser();
 
 // gets all the locations currently available for the user
-	LocationsFactory.getUserLocationss(currentUser)
+	LocationsFactory.getUserLocations(currentUser)
 	.then(function(allUserLocations){
 		console.log('allUserLocations', allUserLocations);
 		$scope.userLocations = allUserLocations;
@@ -26,7 +26,7 @@ console.log("newProductCtrlRunning: ");
 		ProductsFactory.postNewProduct($scope.newUserProduct)
 		.then((response) => {
 			// console.log("response = ", response);
-			$window.location.url = '#/';
+			$window.location.url = '#/main';
 			$scope.$apply();
 		});
 	};
