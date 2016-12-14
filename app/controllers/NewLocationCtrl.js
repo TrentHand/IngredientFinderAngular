@@ -1,36 +1,13 @@
+// WE SHOULDN'T NEED THIS CONTROLLER
+
+
 "use strict";
 
-app.controller('NewProductCtrl', function($scope, ProductsFactory, LocationsFactory, AuthFactory, $window){
-// console.log("newProductCtrlRunning: ");
-// pulls in the current user from the AuthFactory
-	let currentUser = AuthFactory.getUser();
+app.controller('NewLocationCtrl', function($scope, ProductsFactory, LocationsFactory, AuthFactory, $window){
+// console.log("newLocationCtrlRunning: ");
+	// grabbing the geolocation and sending the information to Google
+
 	var geocoder = new google.maps.Geocoder;
-
-// gets all the locations currently available for the user
-	LocationsFactory.getUserLocations(currentUser)
-	.then(function(allUserLocations){
-		$scope.userLocations = allUserLocations;
-		$scope.$apply();
-	});
-
-
-	$scope.newUserProduct = {
-		"locationid": "",
-		"id": "",
-		"uid": currentUser,
-		"description": ""
-	};
-
-	$scope.addNewProduct = function(){
-		console.log('$scope.newUserProduct', $scope.newUserProduct);
-		ProductsFactory.postNewProduct($scope.newUserProduct)
-		.then((response) => {
-			// console.log("response = ", response);
-			$window.location.url = '#/main';
-			$scope.$apply();
-		});
-	};
-
 
 	$scope.newUserLocation = {
 		"name": "",
@@ -66,4 +43,6 @@ app.controller('NewProductCtrl', function($scope, ProductsFactory, LocationsFact
 
 
 	}
+
+
 });

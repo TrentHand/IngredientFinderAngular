@@ -27,7 +27,9 @@
 		<!-- jQuery -->
 		<script type="text/javascript" src="lib/node_modules/jquery/dist/jquery.min.js"></script>
 
-
+		<!-- GoogleMaps API -->
+		<script src="lib/bower_components/google-maps/lib/Google.min.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 		<!-- Boostrap -->
 		<script type="text/javascript" src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -35,11 +37,14 @@
 		 <script src="lib/node_modules/angular/angular.min.js"></script>
 		<script src="lib/node_modules/angular-route/angular-route.min.js"></script>
 		<!-- Firebase -->
-	    <script src="lib/bower_components/firebase/firebase.js"></script>
+	  <script src="lib/bower_components/firebase/firebase.js"></script>
 
+	  <!-- Directives -->
+	  <script src="lib/bower_components/angular-reverse-geocode/angular-reverse-geocode.js"></script>
 
 		<script src="app/app.js"></script>
 		<script src="app/values/fb-getter.js"></script>
+		<script src="app/values/GooglePlace-getter.js"></script>
 
 		<!-- providers -->
 		<script src="app/factories/AuthFactory.js"></script>
@@ -47,10 +52,12 @@
 		<script src="app/factories/LocationsFactory.js"></script>
 
 		<!-- controllers -->
-	    <script src="app/controllers/NavCtrl.js"></script>
+	  <script src="app/controllers/NavCtrl.js"></script>
 		<script src="app/controllers/LoginCtrl.js"></script>
 		<script src="app/controllers/ViewAllProductsCtrl.js"></script>
 		<script src="app/controllers/NewProductCtrl.js"></script>
+		<script src="app/controllers/NewLocationCtrl.js"></script>
+		<script src="app/controllers/ViewUserProductsCtrl.js"></script>
 
 	</body>
 </html>

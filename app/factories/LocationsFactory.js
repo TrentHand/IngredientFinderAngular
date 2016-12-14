@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('LocationsFactory', function($http, FBCreds){
+app.factory('LocationsFactory', function($http, FBCreds, GMapCreds){
 				let LocationsArr = [];
 
 	let getAllLocations = (fbKey) => {
@@ -12,14 +12,12 @@ app.factory('LocationsFactory', function($http, FBCreds){
 					currentLocation.id = key;
 					LocationsArr.push(currentLocation);
 				});
-				console.log('LocationsArr', LocationsArr);
 				resolve(LocationsArr);
 			});
 		});
 	};
 
 	let getSingleLocation = (LocationId) => {
-		console.log('getSingleLocation(LocationId)', LocationId);
 	};
 
 	let postNewLocation = (newLocation) => {
@@ -37,7 +35,6 @@ app.factory('LocationsFactory', function($http, FBCreds){
 	};
 
 	let getUserLocations = (userId) => {
-		console.log('userId', userId);
 		let userLocationsArr = [];
 		return new Promise((resolve, reject)=> {
 			$http.get(`${FBCreds.databaseURL}/locations.json?orderBy="uid"&equalTo="${userId}"`)
@@ -46,11 +43,41 @@ app.factory('LocationsFactory', function($http, FBCreds){
 					userLocations[fbKey].id = fbKey;
 					userLocationsArr.push(userLocations[fbKey]);
 				});
-				console.log('userLocationsArr', userLocationsArr);
 				resolve(userLocationsArr);
 			});
 		});
 	};
+
+	// 	let getCurrentLocationPlaceid = (lat, long) => {
+	// 	return new Promise((resolve, reject)=> {
+	// 		// get this from the postman
+	// 		$http.get(`https://maps.googleapis.com/maps/api/place/radarsearch/json?location=${lat},${long}&radius=50&type=business&key=${GMapCreds.apiKey}`)
+	// 		.success((currentLocationPlaceid) => {
+	// 			resolve(currentLocationPlaceid);
+	// 			console.log("currentLocationPlaceid", currentLocationPlaceid);
+	// 			});
+	// 		});
+	// };
+
+
+	// 	let getCurrentLocationAddress = (placeid) => {
+	// 	return new Promise((resolve, reject)=> {
+	// 		$http.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJb5on_wlmZIgRdcjMg9n5eLM&key=AIzaSyD0-3rF7IRkTdzTSpCuiWuJkXzw9exwOM8`)
+	// 		.success((currentLocationAddress) => {
+	// 			resolve(currentLocationAddressLocationAddress);
+	// 		});
+	// 	});
+	// };
+
+	// 	let getCurrentLocationName = (address) => {
+	// 	return new Promise((resolve, reject)=> {
+	// 		// get this from the postman
+	// 		$http.get(``)
+	// 		.success((currentLocationName) => {
+	// 			resolve(currentLocationName);
+	// 			});
+	// 		});
+	// };
 
 	return { getAllLocations, getSingleLocation, postNewLocation, getUserLocations };
 

@@ -28,5 +28,4 @@ app.controller('NavCtrl', function($scope){
 		}
 
 	];
-		console.log("nav items: ", $scope.navItems);
 });
