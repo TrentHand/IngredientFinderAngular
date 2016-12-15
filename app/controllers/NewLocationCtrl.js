@@ -25,7 +25,6 @@ app.controller('NewLocationCtrl', function($scope, ProductsFactory, LocationsFac
 				lat: $scope.newUserLocation.lat,
 				lng: $scope.newUserLocation.long
 			};
-		console.log("newUserLocation = ", $scope.newUserLocation);
 	 	geocoder.geocode({'location': latlng}, function(results, status) {
 	    if (status === 'OK') {
 	      if (results[0]) {

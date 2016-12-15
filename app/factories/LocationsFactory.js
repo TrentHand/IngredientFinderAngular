@@ -4,6 +4,7 @@ app.factory('LocationsFactory', function($http, FBCreds, GMapCreds, AuthFactory)
 				let LocationsArr = [];
 				let currentUser = AuthFactory.getUser();
 
+
 	let getAllLocations = (fbKey) => {
 		return new Promise((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/locations.json`)
@@ -18,7 +19,24 @@ app.factory('LocationsFactory', function($http, FBCreds, GMapCreds, AuthFactory)
 		});
 	};
 
-	let getSingleLocation = (LocationId) => {
+	let getSingleLocation = (locationid) => {
+		let singleLocation = {};
+		return new Promise((resolve, reject) => {
+			$http.get(`${FBCreds.databaseURL}/locations.json?"${locationid}"`)
+			.success((singleLocation)=> {
+				Object.keys(singleLocation).forEach((key) => {
+					console.log("key: ", key);
+					if (locationid === key) {
+							console.log("singleLocation[key]: ", singleLocation[key]);
+							resolve(singleLocation[key]);
+					}
+					// productLocation[key].
+				})
+			})
+			.error((error) => {
+				reject(error);
+			});
+		});
 	};
 
 	let postNewLocation = (newLocation) => {
