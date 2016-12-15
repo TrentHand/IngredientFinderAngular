@@ -1,15 +1,18 @@
 <h2>Add a new product!</h2>
 
 
+
+	<select ng-model="selectedLocation">
+		<option ng-repeat="userLocation in userLocations" value="{{userLocation.id}}">{{userLocation.name}} - {{userLocation.address}}</option>
+  <!-- ﻿⁠⁠⁠⁠<option disabled selected>Pick a saved location: </option>﻿⁠⁠⁠⁠ -->
+  </select>
+
+ -<button ng-click="addNewLocation()">Find my location</button>
+	<input type="text" placeholder="Name your location: " ng-model="newUserLocation.name">
+	<h3>{{newUserLocation.name}} - {{newUserLocation.address}}</h3>
+	<button ng-click="postNewLocation()">Save the new location</button>
+
 	<input type="text" placeholder="What is the product?" ng-model="newUserProduct.name">
 	<input type="text" ng-model="newUserProduct.description" placeholder="Say something about this product">
-
-	<select ng-model="newUserProduct.locationid" >
-	 <option value="{{userLocation.id}}" ng-repeat="userLocation in userLocations">{{userLocation.title}}</option>
-	</select>
-	<button ng-click="addNewLocation()">Find my location</button>
-	<input type="text" placeholder="Name your location: " ng-model="newUserLocation.name">
-	<h3 ng-model="newUserLocation.address"></h3>
-
 
 	<button ng-click="addNewProduct()">Save this product</button>

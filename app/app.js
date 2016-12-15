@@ -33,23 +33,23 @@ app.config(function($routeProvider){
         }).
         when("/addlocation", {
             templateUrl: "partials/AddLocation.html",
-            controller: "NewLocationCtrl"
-            // resolve: {isAuth}
+            controller: "NewLocationCtrl",
+            resolve: {isAuth}
         }).
         when("/addproduct", {
             templateUrl: "partials/NewProduct.html",
-            controller: "NewProductCtrl"
-            // resolve: {isAuth}
+            controller: "NewProductCtrl",
+            resolve: {isAuth}
         }).
         when("/viewuserlocations", {
             templateUrl: "partials/ViewUserLocations.html",
-            controller: "ViewUserLocationsCtrl"
-            // resolve: {isAuth}
+            controller: "ViewUserLocationsCtrl",
+            resolve: {isAuth}
         }).
         when("/viewuserproducts", {
             templateUrl: "partials/ViewUserProducts.html",
-            controller: "ViewUserProductsCtrl"
-            // resolve: {isAuth}
+            controller: "ViewUserProductsCtrl",
+            resolve: {isAuth}
         }).
         otherwise('/main')
 

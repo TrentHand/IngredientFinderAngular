@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('LoginCtrl', function($scope, AuthFactory, $window){
+app.controller('LoginCtrl', function($scope, AuthFactory, $window, $location){
 // I NEED TO CHANGE THIS TO A GOOGLE LOGIN
 	// $scope.account = {
 	// 	email: '',
