@@ -49,9 +49,14 @@ app.factory('LocationsFactory', function($http, FBCreds, GMapCreds, AuthFactory)
 					userLocationsArr.push(userLocations[fbKey]);
 				});
 				resolve(userLocationsArr);
+			})
+			.error((error) => {
+				reject(error);
 			});
 		});
 	};
+
+
 
 
 

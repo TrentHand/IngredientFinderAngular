@@ -4,9 +4,8 @@
 	<input type="text" placeholder="What is the product?" ng-model="newUserProduct.name">
 	<input type="text" ng-model="newUserProduct.description" placeholder="Say something about this product">
 
-	<select ng-model="newUserLocation">
-		<option value="{{userLocation}}" ng-repeat="userLocation in userLocations">{{userLocation.name}}</option>}
-		option
+	<select>
+		<option ng-repeat="userLocation in userLocations">{{userLocation.name}} - {{userLocation.address}}</option>
   <!-- ﻿⁠⁠⁠⁠<option disabled selected>I am your select box</option>﻿⁠⁠⁠⁠ -->
   </select>
 
