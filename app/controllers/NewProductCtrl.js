@@ -8,21 +8,22 @@ app.controller('NewProductCtrl', function($scope, ProductsFactory, LocationsFact
 
 // gets all the locations currently available for the user
 	LocationsFactory.getUserLocations(currentUser)
-	.then(function(allUserLocations){
-		$scope.userLocations = allUserLocations;
+	.then(function(userLocations){
+		console.log("userLocations in NewProductCtrl: ", userLocations);
+		$scope.userLocations = userLocations;
 		$scope.$apply();
 	});
 
 
 	$scope.newUserProduct = {
 		"locationid": "",
-		"id": "",
 		"uid": currentUser,
 		"description": ""
 	};
 
 	$scope.addNewProduct = function(){
 		console.log('$scope.newUserProduct', $scope.newUserProduct);
+		$scope.currentLocation
 		ProductsFactory.postNewProduct($scope.newUserProduct)
 		.then((response) => {
 			// console.log("response = ", response);
@@ -48,12 +49,12 @@ app.controller('NewProductCtrl', function($scope, ProductsFactory, LocationsFact
 				lat: $scope.newUserLocation.lat,
 				lng: $scope.newUserLocation.long
 			};
-		console.log("newUserLocation = ", $scope.newUserLocation);
 	 	geocoder.geocode({'location': latlng}, function(results, status) {
 	    if (status === 'OK') {
 	      if (results[0]) {
-	      	console.log("results from geocoder", results[0].formatted_address);
 	      	$scope.newUserLocation.address = results[0].formatted_address;
+	      	console.log("newUserLocation with address ", $scope.newUserLocation);
+	      	// newUserLocation isn't being updated
 	      } else {
 	        window.alert('No results found');
 	      }
@@ -63,7 +64,10 @@ app.controller('NewProductCtrl', function($scope, ProductsFactory, LocationsFact
   });
 
 			});
-
-
 	}
+
+	$scope.postNewLocation = function(){
+		LocationsFactory.postNewLocation($scope.newUserLocation);
+	}
+
 });
