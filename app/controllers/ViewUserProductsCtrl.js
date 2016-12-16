@@ -3,10 +3,14 @@
 app.controller('ViewUserProductsCtrl', function($scope, ProductsFactory, LocationsFactory){
 	ProductsFactory.getUserProducts()
 		.then((data) => {
-			data.forEach((product) => {
+			data.map((product) => {
 				LocationsFactory.getSingleLocation(product.locationid)
 				.then((location) => {
+					product.locationName = location.name;
+					product.locationAddress = location.address;
 					console.log("location = :", location);
+					console.log("product: ", product);
+					return product;
 				})
 			})
 			$scope.products = data;

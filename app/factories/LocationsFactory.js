@@ -23,12 +23,12 @@ app.factory('LocationsFactory', function($http, FBCreds, GMapCreds, AuthFactory)
 		let singleLocation = {};
 		return new Promise((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/locations.json?"${locationid}"`)
-			.success((singleLocation)=> {
-				Object.keys(singleLocation).forEach((key) => {
+			.success((userLocations)=> {
+				Object.keys(userLocations).forEach((key) => {
 					console.log("key: ", key);
 					if (locationid === key) {
-							console.log("singleLocation[key]: ", singleLocation[key]);
-							resolve(singleLocation[key]);
+							console.log("singleLocation[key]: ", userLocations[key]);
+							resolve(userLocations[key]);
 					}
 					// productLocation[key].
 				})

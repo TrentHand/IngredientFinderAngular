@@ -36,6 +36,8 @@ app.controller('NewLocationCtrl', function($scope, ProductsFactory, LocationsFac
 	    } else {
 	      window.alert('Geocoder failed due to: ' + status);
 	    }
+	      	// $window.location.href = '#/main';
+	      	// $scope.$apply();
   });
 
 			});

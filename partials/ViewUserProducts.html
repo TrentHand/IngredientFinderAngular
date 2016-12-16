@@ -1,7 +1,15 @@
-<div ng-repeat="product in products">
-	<ul id="{{product.uid}}">
-		<li>{{product.name}} Found at: {{location.name}} Address: {{location.address}}</li>
-		<!-- I'd like to add images to this that the user can take with their phone's camera -->
-	</ul>
-	<!-- <button id="{{product.id}}">Delete: {{product.name}}</button> -->
-</div>
+<label>Search for a product: <input ng-model="searchText"></label>
+
+<table id="products table">
+	<tr><th>Product</th><th>Store</th><th>Address</th></tr>
+		<tr ng-repeat="product in products | filter:searchText">
+			<!-- <ul id="{{product.uid}}"> -->
+			<td>{{product.name}}</td>
+			<td>{{product.locationName}}</td>
+			<td>{{product.locationAddress}}</td>
+				<!-- 		<li>{{product.name}} Found at: {{product.locationName}} Address: {{product.locationAddress}}</li> -->
+				<!-- I'd like to add images to this that the user can take with their phone's camera -->
+			<!-- </ul> -->
+			<!-- <button id="{{product.id}}">Delete: {{product.name}}</button> -->
+		</tr>
+</table>
