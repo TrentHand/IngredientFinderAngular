@@ -21,10 +21,10 @@ app.controller('NavCtrl', function($scope){
 		{
 			name: 'View My Products',
 			url: '#/viewuserproducts'
-		},
-		{
-			name: 'View My Locations',
-			url: '#/viewuserlocations'
+		// },
+		// {
+		// 	name: 'View My Locations',
+		// 	url: '#/viewuserlocations'
 		}
 
 	];
