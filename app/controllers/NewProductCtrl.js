@@ -64,6 +64,8 @@ app.controller('NewProductCtrl', function($scope, ProductsFactory, LocationsFact
 
 	$scope.postNewLocation = function(){
 		LocationsFactory.postNewLocation($scope.newUserLocation);
-	}
+					$window.location.href = '#/addproduct';
+					$scope.$apply();
+	};
 
 });

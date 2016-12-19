@@ -10,7 +10,6 @@ app.controller('ViewAllProductsCtrl', function($scope, ProductsFactory, Location
 					product.locationAddress = location.address;
 					// console.log("location = :", location);
 					console.log("product: ", product);
-					debugger;
 					return product;
 				})
 			})
