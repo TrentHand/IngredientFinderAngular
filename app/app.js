@@ -26,6 +26,11 @@ app.config(function($routeProvider){
         when("/main", {
             templateUrl: "partials/ViewAllProducts.html",
             controller: "ViewAllProductsCtrl"
+            // resolve: {
+            //     locationName: function(LocationsFactory) {
+            //         return LocationsFactory.getSingleLocation();
+            //     }
+
         }).
         when("/viewlocation", {
             templateUrl: "partials/ViewSingleLocation.html",

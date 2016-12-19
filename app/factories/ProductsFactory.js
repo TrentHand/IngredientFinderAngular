@@ -40,7 +40,6 @@ app.factory('ProductsFactory', function($http, FBCreds, AuthFactory){
 		})
 	};
 
-	// url: `https://moviehistory-f323f.firebaseio.com/movies.json?orderBy="uid"&equalTo="${currentUserID}"`
 
 	let postNewProduct = (newProduct) => {
 		return new Promise((resolve, reject) => {
@@ -54,6 +53,8 @@ app.factory('ProductsFactory', function($http, FBCreds, AuthFactory){
 			});
 		});
 	};
+
+
 
 	return {
 		getAllProducts,
