@@ -8,14 +8,21 @@ app.controller('ViewUserProductsCtrl', function($scope, ProductsFactory, Locatio
 				.then((location) => {
 					product.locationName = location.name;
 					product.locationAddress = location.address;
-					console.log("location = :", location);
+					// console.log("location = :", location);
 					console.log("product: ", product);
 					return product;
 				})
 			})
 			$scope.products = data;
-			console.log("data: ", $scope.products);
+			// console.log("data: ", $scope.products);
 			$scope.$apply();
 		});
+
+		$scope.removeProduct = (item) => {
+			let index = $scope.products.indexOf(item)
+			$scope.products.splice(index,1);
+	}
+
+
 
 });

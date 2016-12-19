@@ -25,9 +25,7 @@ app.factory('LocationsFactory', function($http, FBCreds, GMapCreds, AuthFactory)
 			$http.get(`${FBCreds.databaseURL}/locations.json?"${locationid}"`)
 			.success((userLocations)=> {
 				Object.keys(userLocations).forEach((key) => {
-					console.log("key: ", key);
 					if (locationid === key) {
-							console.log("singleLocation[key]: ", userLocations[key]);
 							resolve(userLocations[key]);
 					}
 					// productLocation[key].
