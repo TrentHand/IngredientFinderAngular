@@ -1,14 +1,10 @@
 "use strict";
 
-app.controller('NavCtrl', function($scope){
+app.controller('NavCtrl', function($scope, AuthFactory, $window){
 	$scope.navItems = [
 		{
 			name: 'Login/Register',
 			url: '#/login'
-		},
-		{
-			name: 'Logout',
-			url: '#/logout'
 		},
 		{
 			name: 'View All Products',
@@ -21,11 +17,28 @@ app.controller('NavCtrl', function($scope){
 		{
 			name: 'View My Products',
 			url: '#/viewuserproducts'
-		// },
-		// {
-		// 	name: 'View My Locations',
-		// 	url: '#/viewuserlocations'
 		}
 
 	];
+
+	$scope.logOut = () => {
+		console.log("logOut");
+		AuthFactory.logoutUser()
+		.then((logoutData) => {
+			$window.location.href = '#/main';
+			console.log("Logged out", logoutData);
+		});
+	};
+
+	// $scope.logOut = () => {
+	// 	AuthFactory.logoutUser()
+	// 	.then((logoutData) => {
+	// 		console.log("logoutData", logoutData);
+	// 		AuthFactory.isAuthenticated()
+	// 		.then((Authdata) => {
+	// 			console.log("Authdata", Authdata)
+	// 			$window.location.href = "#/main";
+	// 		});
+	// 	});
+	// };
 });

@@ -16,7 +16,6 @@ app.controller('ViewUserProductsCtrl', function($scope, ProductsFactory, Locatio
 
 	function loopData(products) {
 		let productPromises = [];
-
 		return new Promise((resolve, reject) => {
 			products.forEach((product) => {
 				productPromises.push(LocationsFactory.getSingleLocation(product.locationid));
@@ -32,13 +31,15 @@ app.controller('ViewUserProductsCtrl', function($scope, ProductsFactory, Locatio
 		})
 	};
 
-
 	$scope.removeProduct = (item) => {
-		let index = $scope.products.indexOf(item)
-		$scope.products.splice(index,1);
+		console.log("item: ", item);
+		let itemId = item.id;
+		ProductsFactory.deleteFbProduct(itemId)
+		.then(() => {
+			let index = $scope.products.indexOf(item)
+			$scope.products.splice(index,1);
+			$scope.$apply();
+		});
 	};
 
-				// .then((product) => {
-
-				// })
 });

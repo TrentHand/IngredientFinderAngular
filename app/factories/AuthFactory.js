@@ -2,10 +2,7 @@
 
 app.factory('AuthFactory', function(){
 	let currentUser = null;
-// this also needs to be switched to Google signIn
-	// let createUser = function(userObj){
-	// 	return firebase.auth().createUserWithEmailAndPassword(userObj.email, userObj.password);
-	// };
+
 
 	let provider = new firebase.auth.GoogleAuthProvider();
 
@@ -13,13 +10,13 @@ app.factory('AuthFactory', function(){
     	return firebase.auth().signInWithPopup(provider);
   	};
 
-	// let loginUser = function(userObj){
-	// 	return firebase.auth().signInWithEmailAndPassword(userObj.email, userObj.password);
-	// };
 
-	let logoutUser = function(){
-		return firebase.auth().signOut;
+	let logoutUser = () => {
+		console.log("logoutUser is running");
+		return firebase.auth().signOut();
 	};
+
+
 
 	let isAuthenticated = function(){
 		return new Promise((resolve, reject) => {
@@ -28,6 +25,7 @@ app.factory('AuthFactory', function(){
 					currentUser = user.uid;
 					resolve(true);
 				} else {
+					currentUser = null;
 					resolve(false);
 				}
 			});
@@ -39,8 +37,6 @@ app.factory('AuthFactory', function(){
 	};
 
 	return {
-		// createUser,
-		// loginUser,
 		authWithProvider,
 		logoutUser,
 		isAuthenticated,

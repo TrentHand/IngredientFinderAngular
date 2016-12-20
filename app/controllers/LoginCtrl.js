@@ -1,25 +1,7 @@
 "use strict";
 
 app.controller('LoginCtrl', function($scope, AuthFactory, $window, $location){
-// I NEED TO CHANGE THIS TO A GOOGLE LOGIN
-	// $scope.account = {
-	// 	email: '',
-	// 	password: ''
-	// };
 
-	// $scope.register = () => {
-	// 	AuthFactory.createUser($scope.account)
-	// 	.then((userData) => {
-	// 		$scope.login();
-	// 	});
-	// };
-
-	// $scope.login = () => {
-	// 	AuthFactory.loginUser($scope.account)
-	// 	.then((user) => {
-	// 		$window.location.href = '#/login';
-	// 	});
-	// };
 
 	$scope.loginGoogle = () => {
 		console.log("you clicked login with Google");
@@ -28,7 +10,7 @@ app.controller('LoginCtrl', function($scope, AuthFactory, $window, $location){
 	    	var user = result.user.uid;
 	    	console.log("logged in user:", user);
 	    	//Once logged in, go to another view
-	    	$location.path("/addproduct");
+	    	$location.path("/viewuserproducts");
 	    	$scope.$apply();
 	  	}).catch(function(error) {
 	    	// Handle the Errors.

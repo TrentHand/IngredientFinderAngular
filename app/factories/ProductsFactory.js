@@ -54,10 +54,34 @@ app.factory('ProductsFactory', function($http, FBCreds, AuthFactory){
 		});
 	};
 
+	let deleteFbProduct = (itemId) => {
+		return new Promise((resolve, reject) => {
+			$http.delete(`${FBCreds.databaseURL}/products/${itemId}.json`).success(() => {
+				resolve();
+			})
+			.error((error) => {
+				console.log("product delete failed: ", error);
+				reject(error);
+			});
+		});
+	};
 
+	// let deletePin = (pinId) => {
+ //    return $q((resolve, reject) => {
+ //      $http.delete(`${FirebaseURL}pins/${pinId}.json`)
+ //        .success(() => {
+ //          resolve();
+ //        })
+ //        .error((error)=> {
+ //          console.log('pin delete fail:', error);
+ //          reject(error);
+ //        });
+ //    });
+ //  };
 
 	return {
 		getAllProducts,
+		deleteFbProduct,
 		postNewProduct,
 		getUserProducts
 	};
