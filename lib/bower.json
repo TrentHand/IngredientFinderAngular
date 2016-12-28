@@ -1,0 +1,22 @@
+{
+  "name": "ingredient-finder-angular",
+  "description": "",
+  "main": "dist/app.js",
+  "authors": [
+    "Trent Hand"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/TrentHand/IngredientFinderAngular",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "google-maps": "^3.2.1",
+    "firebase": "^3.6.4",
+    "angular-reverse-geocode": "*"
+  }
+}
