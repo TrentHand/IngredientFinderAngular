@@ -14,6 +14,8 @@ app.factory('AuthFactory', function(){
 	let logoutUser = () => {
 		console.log("logoutUser is running");
 		return firebase.auth().signOut();
+		$window.location.href = '#/login';
+		$scope.$apply();
 	};
 
 

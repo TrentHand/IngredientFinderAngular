@@ -22,11 +22,10 @@ app.controller('NavCtrl', function($scope, AuthFactory, $window){
 	];
 
 	$scope.logOut = () => {
-		console.log("logOut");
 		AuthFactory.logoutUser()
 		.then((logoutData) => {
-			$window.location.href = '#/main';
-			console.log("Logged out", logoutData);
+			$window.location.href = '#/login';
+			$scope.$apply();
 		});
 	};
 
