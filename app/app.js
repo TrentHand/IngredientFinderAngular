@@ -1,4 +1,4 @@
-'use strict';
+'use strict';  
 
 let app = angular.module('IngredientFinder', ['ngRoute', 'angularReverseGeocode']);
 
@@ -30,11 +30,6 @@ app.config(function($routeProvider){
         when("/viewlocation", {
             templateUrl: "partials/ViewSingleLocation.html",
             controller: "ViewSingleLocationCtrl"
-        }).
-        when("/addlocation", {
-            templateUrl: "partials/AddLocation.html",
-            controller: "NewLocationCtrl",
-            resolve: {isAuth}
         }).
         when("/addproduct", {
             templateUrl: "partials/NewProduct.html",
